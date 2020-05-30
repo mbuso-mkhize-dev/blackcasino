@@ -1,0 +1,56 @@
+
+<div *ngIf="data.turn || data.round || data.gameover else elseBlock">
+  <div *ngIf="data.round">
+    <h1 mat-dialog-title>End of Round 1!</h1>
+    <div mat-dialog-content>
+      <p>Dealer says : Nice round 1,  <br> 
+      Lets go again.
+      </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+</div> 
+
+<div *ngIf="data.turn">
+  <h1 mat-dialog-title>Dealer turn</h1>
+    <div mat-dialog-content>
+      <p>You ready?
+      </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+</div> 
+
+<div *ngIf="data.gameover">
+  <h1 mat-dialog-title>Game Over</h1>
+    <div mat-dialog-content>
+      <p>The winner is {{data.winner}}!!!
+      </p>
+      <p>Won by {{data.points}} points!!!
+      </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+</div> 
+
+</div>
+<ng-template #elseBlock>
+
+<h1 mat-dialog-title>Player Details</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Player Name </mat-label>
+    <input matInput [(ngModel)]="data.playerName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Player Number </mat-label>
+    <input matInput [(ngModel)]="data.playerNumber">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
+</ng-template>
